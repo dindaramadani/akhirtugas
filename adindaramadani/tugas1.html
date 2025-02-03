@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Layanan Masyarakat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        header {
+            background-color: #23b9d3;
+            color: white;
+            padding: 1px;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f1f1f1;
+            padding: 0.5rem;
+        }
+        nav button {
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #027ea3;
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        nav button:hover {
+            background-color: #707070;
+        }
+        .kanan {
+            padding: 2rem;
+            float: left;
+        }
+        .hidden {
+            display: none;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 1rem;
+        }
+        button.submit {
+            background-color: #027ea3;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button.submit:hover {
+            background-color: #707070;
+        }
+        .complaints {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        table {
+            width: 50%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+            font-size: 12px;
+            padding: 5px;
+            float: right;
+        }
+        .tabel-kecil {
+            margin-top: 50px;
+            position: relative;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 250px; /* Gambar lebih besar */
+        }
+        table th, table td {
+            padding: 0.5rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .text-right {
+            text-align: center;
+            margin-right: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: flex-start; 
+            padding: 20px;
+            margin-top: -50px;
+        }
+
+        .content {
+            width: 65%; 
+        }
+
+        .section {
+            margin-bottom: 20px; /* Memberikan ruang antar bagian */
+        }
+
+        .judul {
+            font-weight: bold;
+            font-size: 20px;  /* Ukuran font lebih kecil */
+        }
+
+        .daftar {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .daftar li {
+            margin-bottom: 10px; 
+            font-size: 14px;  /* Ukuran font lebih kecil */
+        }
+
+        .dekorasi {
+            width: 700px;
+            position: absolute;
+            bottom: 20px; /* Menempatkan gambar di bagian bawah */
+            right: 50px; /* Menempatkan gambar di sebelah kanan */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistem Layanan Masyarakat</h1>
+    </header>
+    <nav>
+        <button onclick="showPage('info')">Halaman Informasi</button>
+        <button onclick="showPage('complaint')">Halaman Pengaduan</button>
+    </nav>
+    <div class="kanan">
+        
+        <div id="info" class="page">
+            <div class="container">
+                <!-- Konten layanan primer dan sekunder di sebelah kiri -->
+                <div class="content"> 
+                    <div class="section">
+                        <div class="judul">
+                            <h1>Layanan Primer</h1>
+                        </div>
+                        <ul class="daftar">
+                            <li><strong>Layanan Kesehatan:</strong> Pemeriksaan umum di puskesmas, imunisasi, layanan ibu dan anak, serta penyuluhan kesehatan.</li>
+                            <li><strong>Layanan Pendidikan:</strong> Sekolah dasar dan menengah, bantuan pendidikan, serta program beasiswa untuk siswa kurang mampu.</li>
+                            <li><strong>Layanan Administrasi:</strong> Pembuatan KTP, KK, akta kelahiran, dan surat keterangan lainnya di kantor kelurahan atau kecamatan.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <div class="judul">
+                            <h1>Layanan Sekunder</h1>
+                        </div>
+                        <ul class="daftar">
+                            <li><strong>Layanan Kesehatan:</strong> Rumah sakit rujukan, spesialisasi medis, operasi, rawat inap.</li>
+                            <li><strong>Layanan Pendidikan:</strong> Pendidikan kejuruan, perguruan tinggi, beasiswa lanjutan.</li>
+                            <li><strong>Layanan Administrasi:</strong> Pengurusan paspor, visa, layanan hukum, dan konsultasi khusus.</li>
+                        </ul>
+                    </div>
+                </div> 
+                <!-- Tempat gambar di sebelah kanan bawah -->
+                <div class="dekorasi">
+                    <img src="images.png" alt="gambar dekorasi" style="width: 500px;">
+                </div>
+            </div>
+        </div>
+
+        <div id="complaint" class="page hidden">
+            <h2>Formulir Pengaduan</h2>
+            <img src="layananmasyarakat.jpg" alt="gambar dekorasi" class="dekorasi">
+            <img src="orangnunjuk.jpg" alt="gambar" style="float: right; width: 150px;">
+            <p>Silakan isi formulir di bawah ini untuk mengajukan pengaduan:</p>
+            <form onsubmit="submitComplaint(event)">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+                <label for="message">Pesan Pengaduan:</label>
+                <textarea id="message" name="message" required></textarea>
+                <br>
+                <button type="submit" class="submit">Kirim Pengaduan</button>
+            </form>
+            <div id="complaintsList" class="complaints hidden">
+                <h3>Daftar Pengaduan:</h3>
+               <ul id="list"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function submitComplaint(event) {
+            event.preventDefault(); 
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            const complaintsList = document.getElementById('list');
+            const listItem = document.createElement('li');
+            listItem.textContent ='Nama: ${name} - Pesan: ${message}';
+            complaintsList.appendChild(listItem);
+
+            document.getElementById('complaintsList').classList.remove('hidden');
+
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
